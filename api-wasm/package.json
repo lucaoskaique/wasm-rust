@@ -1,0 +1,22 @@
+{
+  "name": "angel-api-client-wasm-tests",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Tests for Angel API Client WASM package",
+  "scripts": {
+    "build": "npm run build:all",
+    "build:all": "npm run build:nodejs && npm run build:web && npm run build:bundler && npm run build:es-pack",
+    "build:nodejs": "wasm-pack build --target nodejs --scope myangel-ai --out-dir pkg-nodejs",
+    "build:web": "wasm-pack build --target web --scope myangel-ai --out-dir pkg-web",
+    "build:bundler": "wasm-pack build --target bundler --scope myangel-ai --out-dir pkg-bundler",
+    "build:no-modules": "wasm-pack build --target no-modules --scope myangel-ai --out-dir pkg-no-modules",
+    "build:es-pack": "wasm-pack build --target no-modules --scope myangel-ai && npx es-pack build --rustwasm",
+    "test": "npm run build:web && node --experimental-strip-types test.ts",
+    "test:bundler": "node --experimental-strip-types test.ts",
+    "test:js": "node test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "es-pack-js": "^0.6.0"
+  }
+}

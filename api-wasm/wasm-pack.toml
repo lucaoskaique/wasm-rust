@@ -1,0 +1,4 @@
+[package]
+name = "angel-api-client-wasm"
+description = "WebAssembly bindings for the Angel API client"
+license = "MIT"
